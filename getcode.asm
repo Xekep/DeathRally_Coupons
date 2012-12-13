@@ -69,9 +69,9 @@ proc getcode
 	invoke connect,[hSock],eax,sizeof.sockaddr_in
 	invoke send,[hSock],qry,size_qry,0
 	invoke recv,[hSock],buff,1024,0
+	mov esi,eax
 	invoke closesocket,[hSock]
-
-	mov ebx,eax
+	mov ebx,esi
 	mov eax,buff
 	add ebx,buff
 	@@:
